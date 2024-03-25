@@ -609,7 +609,7 @@ else
     else
         hi FoldColumn   guifg=#bcbcbc
         hi Folded       guifg=#bcbcbc
-        hi Pmenu                        guibg=#b2b2b2
+        hi Pmenu                        guibg=#262626
         hi PmenuSbar    guifg=#b2b2b2   guibg=#d0d0d0
         hi PmenuThumb                   guibg=#808080
         hi SignColumn   guifg=#b2b2b2
