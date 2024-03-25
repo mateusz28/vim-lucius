@@ -172,7 +172,7 @@ endif
 " ============================================================================
 
 let s:color_map = {
-    \ 'bg': 'bg', 'fg': 'fg', 'NONE': 'NONE',
+    \ 'bg': 'bg_luc', 'fg': 'fg_luc', 'NONE': 'NONE',
     \ '#000000':  '16', '#00005f':  '17', '#000087':  '18', '#0000af':  '19',
     \ '#0000d7':  '20', '#0000ff':  '21', '#005f00':  '22', '#005f5f':  '23',
     \ '#005f87':  '24', '#005faf':  '25', '#005fd7':  '26', '#005fff':  '27',
@@ -242,9 +242,9 @@ let s:color_map = {
 
 function! s:AddCterm(name)
     exec "let l:gfg = synIDattr(synIDtrans(hlID('" . a:name .
-                \ "')), 'fg', 'gui')"
+                \ "')), 'fg_luc', 'gui')"
     exec "let l:gbg = synIDattr(synIDtrans(hlID('" . a:name .
-                \ "')), 'bg', 'gui')"
+                \ "')), 'bg_luc', 'gui')"
     let l:gfg = l:gfg == "" ? "NONE" : l:gfg
     let l:gbg = l:gbg == "" ? "NONE" : l:gbg
     exec "hi " . a:name . " ctermfg=" . s:color_map[l:gfg] .
@@ -424,18 +424,18 @@ endif
 " Highlighting:
 " ----------------------------------------------------------------------------
 
-hi Cursor       guifg=bg
+hi Cursor       guifg=bg_luc
 hi CursorColumn guifg=NONE
-hi CursorIM     guifg=bg
+hi CursorIM     guifg=bg_luc
 hi CursorLine   guifg=NONE
 hi Visual       guifg=NONE
-hi VisualNOS    guifg=fg        guibg=NONE
+hi VisualNOS    guifg=fg_luc        guibg=NONE
 if s:style == "light"
     hi CursorColumn                 guibg=#dadada
     hi CursorLine                   guibg=#dadada
-    hi IncSearch    guifg=fg        guibg=#5fd7d7
+    hi IncSearch    guifg=fg_luc        guibg=#5fd7d7
     hi MatchParen   guifg=NONE      guibg=#5fd7d7
-    hi Search       guifg=fg        guibg=#ffaf00
+    hi Search       guifg=fg_luc        guibg=#ffaf00
     hi Visual                       guibg=#afd7ff
     if s:contrast == "low"
         hi Cursor                       guibg=#87afd7
@@ -451,9 +451,9 @@ if s:style == "light"
 else
     hi CursorColumn                 guibg=#444444
     hi CursorLine                   guibg=#444444
-    hi IncSearch    guifg=bg
-    hi MatchParen   guifg=fg        guibg=#87af00
-    hi Search       guifg=bg
+    hi IncSearch    guifg=bg_luc
+    hi MatchParen   guifg=fg_luc        guibg=#87af00
+    hi Search       guifg=bg_luc
     hi Visual                       guibg=#005f87
     if s:contrast == "low"
         hi Cursor                       guibg=#5f87af
@@ -484,7 +484,7 @@ endif
 " Messages:
 " ----------------------------------------------------------------------------
 
-hi Question     guifg=fg
+hi Question     guifg=fg_luc
 if s:style == "light"
     if s:contrast == "low"
         hi ErrorMsg     guifg=#d70000
@@ -522,13 +522,13 @@ endif
 " ----------------------------------------------------------------------------
 
 hi ColorColumn  guifg=NONE
-hi Pmenu        guifg=bg
-hi PmenuSel     guifg=fg
-hi PmenuThumb   guifg=fg
-hi StatusLine   guifg=bg
-hi TabLine      guifg=bg
-hi TabLineSel   guifg=fg
-hi WildMenu     guifg=fg
+hi Pmenu        guifg=bg_luc
+hi PmenuSel     guifg=fg_luc
+hi PmenuThumb   guifg=fg_luc
+hi StatusLine   guifg=bg_luc
+hi TabLine      guifg=bg_luc
+hi TabLineSel   guifg=fg_luc
+hi WildMenu     guifg=fg_luc
 if s:style == "light"
     hi ColorColumn                  guibg=#e4e4e4
     hi CursorLineNr guifg=#626262   guibg=#dadada
@@ -627,9 +627,9 @@ endif
 " Diff:
 " ----------------------------------------------------------------------------
 
-hi DiffAdd      guifg=fg
-hi DiffChange   guifg=fg
-hi DiffDelete   guifg=fg
+hi DiffAdd      guifg=fg_luc
+hi DiffChange   guifg=fg_luc
+hi DiffDelete   guifg=fg_luc
 
 if s:style == "light"
     hi DiffAdd                      guibg=#afd7af
@@ -675,8 +675,8 @@ endif
 " Miscellaneous:
 " ----------------------------------------------------------------------------
 
-hi Ignore       guifg=bg
-hi Underlined   guifg=fg
+hi Ignore       guifg=bg_luc
+hi Underlined   guifg=fg_luc
 
 
 " ============================================================================
@@ -729,9 +729,9 @@ let s:alternative_bold_items = ["Identifier", "PreProc", "Statement",
 
 for s:item in s:alternative_bold_items
     exec "let s:temp_gui_fg = synIDattr(synIDtrans(hlID('" . s:item .
-                \ "')), 'fg', 'gui')"
+                \ "')), 'fg_luc', 'gui')"
     exec "let s:temp_cterm_fg = synIDattr(synIDtrans(hlID('" . s:item .
-                \ "')), 'fg', 'cterm')"
+                \ "')), 'fg_luc', 'cterm')"
     exec "hi B" . s:item . " guifg=" . s:temp_gui_fg . " ctermfg=" .
                 \ s:temp_cterm_fg . " gui=bold cterm=bold term=none"
 endfor
